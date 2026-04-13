@@ -2,7 +2,7 @@
   "name": "pomodoro-hijack",
   "displayName": "Pomodoro Hijack",
   "description": "Hijacks your screen at scheduled intervals to force you to take a break.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "ibukimoriya",
   "icon": "media/icon.png",
   "license": "MIT",
@@ -86,7 +86,10 @@
         },
         "pomodoroHijack.language": {
           "type": "string",
-          "enum": ["ja", "en"],
+          "enum": [
+            "ja",
+            "en"
+          ],
           "default": "ja",
           "description": "UI language for break screens and messages."
         }
