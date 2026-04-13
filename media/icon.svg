@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e94560"/>
+      <stop offset="100%" stop-color="#533483"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="20" fill="url(#bg)"/>
+  <!-- tomato body -->
+  <circle cx="64" cy="70" r="36" fill="#ff6b6b"/>
+  <ellipse cx="64" cy="70" rx="36" ry="34" fill="#e94560"/>
+  <!-- leaf -->
+  <path d="M58 36 Q64 28 70 36 Q66 32 64 38 Q62 32 58 36Z" fill="#2ecc71"/>
+  <line x1="64" y1="38" x2="64" y2="44" stroke="#27ae60" stroke-width="2" stroke-linecap="round"/>
+  <!-- clock hands -->
+  <circle cx="64" cy="70" r="2" fill="white"/>
+  <line x1="64" y1="70" x2="64" y2="52" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <line x1="64" y1="70" x2="78" y2="70" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- highlight -->
+  <ellipse cx="52" cy="58" rx="8" ry="12" fill="rgba(255,255,255,0.15)" transform="rotate(-20 52 58)"/>
+</svg>
