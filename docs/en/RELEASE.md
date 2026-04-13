@@ -8,32 +8,37 @@ Distributed as `.vsix` files via GitHub Releases. Not published to the VS Code M
 
 ## Release Flow
 
-### Step 1: Bump the version
+### Step 1: Create a release branch and bump the version
 
 ```bash
-# patch (0.0.1 → 0.0.2)
+git checkout -b release/vX.X.X
+
+# patch (0.0.2 → 0.0.3)
 npm version patch
 
-# minor (0.0.2 → 0.1.0)
+# minor (0.0.3 → 0.1.0)
 npm version minor
 
 # major (0.1.0 → 1.0.0)
 npm version major
 ```
 
-> `npm version` automatically creates a version tag (e.g. `v0.0.2`).
+Also update CHANGELOG.md.
 
-### Step 2: Push the tag to trigger an automatic release
+### Step 2: Create a PR and merge
 
 ```bash
-git push origin main --follow-tags
+git push origin release/vX.X.X
 ```
 
-GitHub Actions will automatically:
+Create a PR on GitHub, review, and merge.
 
-1. Build, lint, and test
-2. Create a `.vsix` package
-3. Create a GitHub Release and upload the `.vsix`
+After merging, GitHub Actions will automatically:
+
+1. Build, lint, format check, and test
+2. Read the version from `package.json` and create a git tag
+3. Create a `.vsix` package
+4. Create a GitHub Release and upload the `.vsix`
 
 ### Step 3: Verify
 
@@ -75,6 +80,7 @@ Or from within VSCode:
 
 - [ ] `npm run compile` passes without errors
 - [ ] `npm run lint` passes without errors
+- [ ] `npm run format:check` passes without errors
 - [ ] `npm test` passes
 - [ ] Verified via F5 debug launch
 - [ ] Version in `package.json` has been updated
