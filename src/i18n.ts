@@ -13,6 +13,8 @@ export interface Messages {
   stopped: string;
   notRunning: string;
   breakOver: string;
+  clickToStart: string;
+  clickToStop: string;
   phaseLabels: Record<ActivePhase, string>;
   phaseTooltips: Record<ActivePhase, string>;
 }
@@ -41,6 +43,8 @@ const ja: Messages = {
   notRunning:
     'ポモドーロは実行されていません。「Pomodoro Hijack: Start」で開始してください。',
   breakOver: '休憩終了！仕事に戻ろう！',
+  clickToStart: 'クリックして開始',
+  clickToStop: 'クリックして停止',
   phaseLabels: { work: '作業中', break: '休憩', longBreak: '長い休憩' },
   phaseTooltips: { work: '作業中', break: '短い休憩', longBreak: '長い休憩' },
 };
@@ -69,6 +73,8 @@ const en: Messages = {
   notRunning:
     'Pomodoro is not running. Use "Pomodoro Hijack: Start" to begin.',
   breakOver: 'Break over! Time to get back to work!',
+  clickToStart: 'Click to start',
+  clickToStop: 'Click to stop',
   phaseLabels: { work: 'Work', break: 'Break', longBreak: 'Long Break' },
   phaseTooltips: {
     work: 'Working',

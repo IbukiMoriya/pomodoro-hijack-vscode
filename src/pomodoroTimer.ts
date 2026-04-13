@@ -25,8 +25,9 @@ export class PomodoroTimer {
       vscode.StatusBarAlignment.Left,
       STATUS_BAR_PRIORITY
     );
-    this.statusBarItem.command = 'pomodoroHijack.status';
     context.subscriptions.push(this.statusBarItem);
+    this.updateStatusBar();
+    this.statusBarItem.show();
   }
 
   start(): void {
@@ -43,7 +44,7 @@ export class PomodoroTimer {
     this.clearTimer();
     this.phase = 'idle';
     HijackPanel.dismiss();
-    this.statusBarItem.hide();
+    this.updateStatusBar();
     this.log('Stopped');
     vscode.window.showInformationMessage(this.messages.stopped);
   }
@@ -141,6 +142,10 @@ export class PomodoroTimer {
 
   private updateStatusBar(): void {
     if (this.phase === 'idle') {
+      this.statusBarItem.text = '🍅';
+      this.statusBarItem.tooltip = this.messages.clickToStart;
+      this.statusBarItem.command = 'pomodoroHijack.start';
+      this.statusBarItem.backgroundColor = undefined;
       return;
     }
 
@@ -149,7 +154,8 @@ export class PomodoroTimer {
     const tooltip = this.messages.phaseTooltips[this.phase];
 
     this.statusBarItem.text = `${icon} ${time}`;
-    this.statusBarItem.tooltip = `Pomodoro: ${tooltip}${this.phase === 'work' ? ` (Cycle ${this.cycleCount + 1})` : ''}`;
+    this.statusBarItem.tooltip = `${tooltip}${this.phase === 'work' ? ` (Cycle ${this.cycleCount + 1})` : ''} — ${this.messages.clickToStop}`;
+    this.statusBarItem.command = 'pomodoroHijack.stop';
     this.statusBarItem.backgroundColor =
       this.phase === 'work'
         ? undefined
