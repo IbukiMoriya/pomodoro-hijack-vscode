@@ -4,7 +4,7 @@
   "description": "Hijacks your screen at scheduled intervals to force you to take a break.",
   "version": "0.0.1",
   "publisher": "ibukimoriya",
-  "icon": "media/icon.svg",
+  "icon": "media/icon.png",
   "license": "MIT",
   "keywords": [
     "pomodoro",
