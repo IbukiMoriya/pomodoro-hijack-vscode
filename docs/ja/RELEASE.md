@@ -8,32 +8,37 @@
 
 ## リリースフロー
 
-### Step 1: バージョンを上げる
+### Step 1: リリースブランチを作成し、バージョンを上げる
 
 ```bash
-# patch (0.0.1 → 0.0.2)
+git checkout -b release/vX.X.X
+
+# patch (0.0.2 → 0.0.3)
 npm version patch
 
-# minor (0.0.2 → 0.1.0)
+# minor (0.0.3 → 0.1.0)
 npm version minor
 
 # major (0.1.0 → 1.0.0)
 npm version major
 ```
 
-> `npm version` はバージョンタグ (`v0.0.2` 等) を自動で作成する。
+CHANGELOG.md も更新すること。
 
-### Step 2: タグを push して自動リリース
+### Step 2: PR を作成してマージ
 
 ```bash
-git push origin main --follow-tags
+git push origin release/vX.X.X
 ```
 
-GitHub Actions が自動で以下を実行する:
+GitHub 上で PR を作成し、レビュー・マージする。
 
-1. ビルド・lint・テスト
-2. `.vsix` パッケージを作成
-3. GitHub Release を作成し `.vsix` をアップロード
+マージ後、GitHub Actions が自動で以下を実行する:
+
+1. ビルド・lint・フォーマットチェック・テスト
+2. `package.json` からバージョンを読み取り、タグを自動作成
+3. `.vsix` パッケージを作成
+4. GitHub Release を作成し `.vsix` をアップロード
 
 ### Step 3: 確認
 
@@ -75,6 +80,7 @@ code --install-extension pomodoro-hijack-x.x.x.vsix
 
 - [ ] `npm run compile` がエラーなく通る
 - [ ] `npm run lint` がエラーなく通る
+- [ ] `npm run format:check` がエラーなく通る
 - [ ] `npm test` が通る
 - [ ] F5 デバッグで動作確認済み
 - [ ] `package.json` のバージョンが更新されている
