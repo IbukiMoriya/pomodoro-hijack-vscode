@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm: compile",
+      "type": "shell",
+      "command": "npm run compile",
+      "options": {
+        "env": {
+          "PATH": "/home/t0233/.nvm/versions/node/v22.18.0/bin:${env:PATH}"
+        }
+      },
+      "group": "build",
+      "problemMatcher": ["$tsc"]
+    }
+  ]
+}
