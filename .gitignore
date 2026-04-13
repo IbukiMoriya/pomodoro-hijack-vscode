@@ -2,3 +2,14 @@ out/
 node_modules/
 *.vsix
 .vscode-test/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+
+# TypeScript
+*.tsbuildinfo
