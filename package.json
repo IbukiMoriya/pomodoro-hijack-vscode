@@ -2,7 +2,7 @@
   "name": "pomodoro-hijack",
   "displayName": "Pomodoro Hijack",
   "description": "Hijacks your screen at scheduled intervals to force you to take a break.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "ibukimoriya",
   "icon": "media/icon.png",
   "license": "MIT",

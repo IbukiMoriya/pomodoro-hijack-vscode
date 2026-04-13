@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.0.3] - 2026-04-13
+
+### Added
+
+- CLAUDE.md（AI 開発ガイドライン）
+- Biome によるコードフォーマッター導入
+- husky + lint-staged による pre-commit hooks
+- .editorconfig（エディタ共通設定）
+
+### Changed
+
+- .gitignore に OS / env / TypeScript 関連パターン追加
+- CI に format:check ステップ追加
+- PR テンプレートに format チェック項目追加
+
+## [0.0.2] - 2026-04-10
+
+### Added
+
+- ステータスバーにトマトアイコン付き Start/Stop トグルボタン
+- GitHub Issue テンプレート（Bug Report / Feature Request）
+- Pull Request テンプレート
+- CI ワークフロー（build / lint / test / vsce package）
+- Release ワークフロー（タグ push で自動リリース）
+
+### Fixed
+
+- 拡張機能アイコンを SVG から PNG に変換（vsce 互換性対応）
+
 ## [0.0.1] - 2026-04-10
 
 ### Added
