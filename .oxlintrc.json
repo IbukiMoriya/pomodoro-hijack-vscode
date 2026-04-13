@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nicolo-ribaudo/oxlint-config-schema/refs/heads/main/.oxlintrc.schema.json",
+  "plugins": ["typescript"],
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "typescript/no-explicit-any": "warn",
+    "typescript/only-throw-error": "error"
+  },
+  "ignorePatterns": ["out/", "node_modules/", "*.js"]
+}

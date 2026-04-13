@@ -1,0 +1,110 @@
+{
+  "name": "pomodoro-hijack",
+  "displayName": "Pomodoro Hijack",
+  "description": "Hijacks your screen at scheduled intervals to force you to take a break.",
+  "version": "0.0.1",
+  "publisher": "ibukimoriya",
+  "icon": "media/icon.svg",
+  "license": "MIT",
+  "keywords": [
+    "pomodoro",
+    "timer",
+    "break",
+    "productivity",
+    "focus",
+    "hijack"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ibukimoriya/pomodoro-hijack-vscode"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Productivity"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pomodoroHijack.start",
+        "title": "Pomodoro Hijack: Start"
+      },
+      {
+        "command": "pomodoroHijack.stop",
+        "title": "Pomodoro Hijack: Stop"
+      },
+      {
+        "command": "pomodoroHijack.status",
+        "title": "Pomodoro Hijack: Show Status"
+      }
+    ],
+    "configuration": {
+      "title": "Pomodoro Hijack",
+      "properties": {
+        "pomodoroHijack.workMinutes": {
+          "type": "number",
+          "default": 25,
+          "minimum": 1,
+          "maximum": 120,
+          "description": "Work duration in minutes before a break."
+        },
+        "pomodoroHijack.breakMinutes": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "maximum": 30,
+          "description": "Break duration in minutes."
+        },
+        "pomodoroHijack.longBreakMinutes": {
+          "type": "number",
+          "default": 15,
+          "minimum": 1,
+          "maximum": 60,
+          "description": "Long break duration in minutes (after every 4 cycles)."
+        },
+        "pomodoroHijack.cyclesBeforeLongBreak": {
+          "type": "number",
+          "default": 4,
+          "minimum": 2,
+          "maximum": 10,
+          "description": "Number of work cycles before a long break."
+        },
+        "pomodoroHijack.autoStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically start the timer when VSCode opens."
+        },
+        "pomodoroHijack.enforceFullBreak": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enforce full break: cannot dismiss break early (must wait full break time)."
+        },
+        "pomodoroHijack.language": {
+          "type": "string",
+          "enum": ["ja", "en"],
+          "default": "ja",
+          "description": "UI language for break screens and messages."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "vscode:prepublish": "npm run compile",
+    "lint": "oxlint --tsconfig ./tsconfig.json src/",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/vscode": "^1.85.0",
+    "oxlint": "^0.16.6",
+    "typescript": "^5.4.5",
+    "vitest": "^4.1.4"
+  }
+}
