@@ -1,4 +1,4 @@
-import type { Language, ActivePhase } from './types';
+import type { ActivePhase, Language } from './types';
 
 export interface Messages {
   breakTitle: string;
@@ -36,12 +36,10 @@ const ja: Messages = {
   strictNoticeWaiting: '休憩が終わるまで待ってね...',
   strictNoticeDone: '休憩終了！お疲れさま！',
   panelTitle: '休憩タイム！',
-  breakSubtitle: (minutes, cycleCount) =>
-    `${minutes}分間の休憩 — サイクル ${cycleCount} 完了`,
+  breakSubtitle: (minutes, cycleCount) => `${minutes}分間の休憩 — サイクル ${cycleCount} 完了`,
   alreadyRunning: 'ポモドーロは既に実行中です！',
   stopped: 'ポモドーロを停止しました。',
-  notRunning:
-    'ポモドーロは実行されていません。「Pomodoro Hijack: Start」で開始してください。',
+  notRunning: 'ポモドーロは実行されていません。「Pomodoro Hijack: Start」で開始してください。',
   breakOver: '休憩終了！仕事に戻ろう！',
   clickToStart: 'クリックして開始',
   clickToStop: 'クリックして停止',
@@ -66,12 +64,10 @@ const en: Messages = {
   strictNoticeWaiting: 'Please wait until the break is over...',
   strictNoticeDone: 'Break complete! Great job!',
   panelTitle: 'Break Time!',
-  breakSubtitle: (minutes, cycleCount) =>
-    `${minutes} min break — Cycle ${cycleCount} complete`,
+  breakSubtitle: (minutes, cycleCount) => `${minutes} min break — Cycle ${cycleCount} complete`,
   alreadyRunning: 'Pomodoro is already running!',
   stopped: 'Pomodoro stopped.',
-  notRunning:
-    'Pomodoro is not running. Use "Pomodoro Hijack: Start" to begin.',
+  notRunning: 'Pomodoro is not running. Use "Pomodoro Hijack: Start" to begin.',
   breakOver: 'Break over! Time to get back to work!',
   clickToStart: 'Click to start',
   clickToStop: 'Click to stop',

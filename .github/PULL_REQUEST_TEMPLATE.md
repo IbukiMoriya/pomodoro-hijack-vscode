@@ -13,5 +13,6 @@
 ## チェックリスト / Checklist
 
 - [ ] `npm run lint` を実行してエラーがないことを確認した / Lint passes
+- [ ] `npm run format:check` を実行してエラーがないことを確認した / Format passes
 - [ ] `npm test` を実行してテストが通ることを確認した / Tests pass
 - [ ] 必要に応じてテストを追加した / Added tests if needed

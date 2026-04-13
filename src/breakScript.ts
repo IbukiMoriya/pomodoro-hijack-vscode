@@ -1,6 +1,11 @@
 import { STAR_COUNT } from './constants';
 
-export function getScript(totalSeconds: number, enforceFullBreak: boolean, tips: string[], strictNoticeDone: string): string {
+export function getScript(
+  totalSeconds: number,
+  enforceFullBreak: boolean,
+  tips: string[],
+  strictNoticeDone: string,
+): string {
   const tipsJson = JSON.stringify(tips).replace(/<\//g, '<\\/');
   const doneJson = JSON.stringify(strictNoticeDone).replace(/<\//g, '<\\/');
   return `
