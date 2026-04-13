@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { renderBreakHtml } from '../breakTemplate';
 import type { HijackOptions } from '../types';
 
@@ -34,7 +34,7 @@ describe('renderBreakHtml', () => {
     const nonceMatches = html.match(/nonce="([^"]+)"/g);
     expect(nonceMatches).not.toBeNull();
     expect(nonceMatches!.length).toBeGreaterThanOrEqual(2);
-    const nonces = nonceMatches!.map(m => m.replace(/nonce="([^"]+)"/, '$1'));
+    const nonces = nonceMatches!.map((m) => m.replace(/nonce="([^"]+)"/, '$1'));
     const uniqueNonces = new Set(nonces);
     expect(uniqueNonces.size).toBe(1);
   });
@@ -84,7 +84,9 @@ describe('renderBreakHtml', () => {
     });
 
     it('shows Japanese subtitle', () => {
-      const html = renderBreakHtml(createOptions({ language: 'ja', breakMinutes: 5, cycleCount: 3 }));
+      const html = renderBreakHtml(
+        createOptions({ language: 'ja', breakMinutes: 5, cycleCount: 3 }),
+      );
       expect(html).toContain('5分間の休憩');
       expect(html).toContain('サイクル 3 完了');
     });
@@ -112,7 +114,9 @@ describe('renderBreakHtml', () => {
     });
 
     it('shows English subtitle', () => {
-      const html = renderBreakHtml(createOptions({ language: 'en', breakMinutes: 15, cycleCount: 4 }));
+      const html = renderBreakHtml(
+        createOptions({ language: 'en', breakMinutes: 15, cycleCount: 4 }),
+      );
       expect(html).toContain('15 min break');
       expect(html).toContain('Cycle 4 complete');
     });

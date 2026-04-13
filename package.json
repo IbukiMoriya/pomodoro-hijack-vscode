@@ -101,11 +101,26 @@
     "watch": "tsc -w -p ./",
     "vscode:prepublish": "npm run compile",
     "lint": "oxlint --tsconfig ./tsconfig.json src/",
-    "test": "vitest run"
+    "format": "npx @biomejs/biome format --write src/",
+    "format:check": "npx @biomejs/biome format src/",
+    "test": "vitest run",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,js,json}": [
+      "npx @biomejs/biome format --write --no-errors-on-unmatched",
+      "npx @biomejs/biome check --write --no-errors-on-unmatched"
+    ],
+    "src/**/*.ts": [
+      "oxlint --tsconfig ./tsconfig.json"
+    ]
   },
   "devDependencies": {
+    "@biomejs/biome": "2.4.11",
     "@types/node": "^20.11.19",
     "@types/vscode": "^1.85.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "oxlint": "^0.16.6",
     "typescript": "^5.4.5",
     "vitest": "^4.1.4"

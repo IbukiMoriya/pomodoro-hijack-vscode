@@ -1,10 +1,10 @@
 import * as vscode from 'vscode';
-import type { Phase, PomodoroSettings } from './types';
-import { loadSettings } from './settings';
-import { getMessages, type Messages } from './i18n';
-import { HijackPanel } from './hijackPanel';
-import { formatTime, minutesToSeconds, getBreakInfo } from './utils';
 import { PHASE_ICONS, STATUS_BAR_PRIORITY, TIMER_INTERVAL_MS } from './constants';
+import { HijackPanel } from './hijackPanel';
+import { getMessages, type Messages } from './i18n';
+import { loadSettings } from './settings';
+import type { Phase, PomodoroSettings } from './types';
+import { formatTime, getBreakInfo, minutesToSeconds } from './utils';
 
 export class PomodoroTimer {
   private settings: PomodoroSettings;
@@ -17,13 +17,13 @@ export class PomodoroTimer {
 
   constructor(
     private readonly context: vscode.ExtensionContext,
-    private readonly output: vscode.OutputChannel
+    private readonly output: vscode.OutputChannel,
   ) {
     this.settings = loadSettings();
     this.messages = getMessages(this.settings.language);
     this.statusBarItem = vscode.window.createStatusBarItem(
       vscode.StatusBarAlignment.Left,
-      STATUS_BAR_PRIORITY
+      STATUS_BAR_PRIORITY,
     );
     context.subscriptions.push(this.statusBarItem);
     this.updateStatusBar();
@@ -58,7 +58,7 @@ export class PomodoroTimer {
     const label = this.messages.phaseLabels[this.phase];
     const time = formatTime(this.remainingSeconds);
     vscode.window.showInformationMessage(
-      `${label} - ${time} remaining (Cycle ${this.cycleCount}/${this.settings.cyclesBeforeLongBreak})`
+      `${label} - ${time} remaining (Cycle ${this.cycleCount}/${this.settings.cyclesBeforeLongBreak})`,
     );
   }
 
@@ -80,13 +80,15 @@ export class PomodoroTimer {
       this.cycleCount,
       this.settings.breakMinutes,
       this.settings.longBreakMinutes,
-      this.settings.cyclesBeforeLongBreak
+      this.settings.cyclesBeforeLongBreak,
     );
 
     this.phase = breakInfo.phase;
     this.remainingSeconds = minutesToSeconds(breakInfo.minutes);
 
-    this.log(`${breakInfo.phase === 'longBreak' ? 'Long break' : 'Break'} started (${breakInfo.minutes} min)`);
+    this.log(
+      `${breakInfo.phase === 'longBreak' ? 'Long break' : 'Break'} started (${breakInfo.minutes} min)`,
+    );
 
     HijackPanel.show(this.context, {
       phase: this.phase,
@@ -157,9 +159,7 @@ export class PomodoroTimer {
     this.statusBarItem.tooltip = `${tooltip}${this.phase === 'work' ? ` (Cycle ${this.cycleCount + 1})` : ''} — ${this.messages.clickToStop}`;
     this.statusBarItem.command = 'pomodoroHijack.stop';
     this.statusBarItem.backgroundColor =
-      this.phase === 'work'
-        ? undefined
-        : new vscode.ThemeColor('statusBarItem.warningBackground');
+      this.phase === 'work' ? undefined : new vscode.ThemeColor('statusBarItem.warningBackground');
   }
 
   private log(message: string): void {

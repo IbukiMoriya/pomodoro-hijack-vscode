@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
+import { CONFIG_SECTION } from './constants';
 import { PomodoroTimer } from './pomodoroTimer';
 import { loadSettings } from './settings';
-import { CONFIG_SECTION } from './constants';
 
 const COMMAND_PREFIX = 'pomodoroHijack';
 
@@ -20,7 +20,7 @@ export async function activate(context: vscode.ExtensionContext) {
       if (e.affectsConfiguration(CONFIG_SECTION)) {
         timer?.reloadSettings();
       }
-    })
+    }),
   );
 
   const settings = loadSettings();

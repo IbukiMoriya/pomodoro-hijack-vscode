@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
-import type { HijackOptions } from './types';
-import { getMessages } from './i18n';
 import { renderBreakHtml } from './breakTemplate';
+import { getMessages } from './i18n';
+import type { HijackOptions } from './types';
 
 export class HijackPanel {
   private static currentPanel: vscode.WebviewPanel | undefined;
@@ -15,7 +15,7 @@ export class HijackPanel {
       'pomodoroHijack.break',
       messages.panelTitle,
       { viewColumn: vscode.ViewColumn.Active, preserveFocus: false },
-      { enableScripts: true, retainContextWhenHidden: true }
+      { enableScripts: true, retainContextWhenHidden: true },
     );
 
     this.currentPanel = panel;
@@ -28,7 +28,7 @@ export class HijackPanel {
         }
       },
       undefined,
-      context.subscriptions
+      context.subscriptions,
     );
 
     panel.onDidDispose(() => {

@@ -1,5 +1,13 @@
-import { describe, it, expect } from 'vitest';
-import { formatTime, minutesToSeconds, minutesToMs, escapeHtml, generateNonce, isLongBreak, getBreakInfo } from '../utils';
+import { describe, expect, it } from 'vitest';
+import {
+  escapeHtml,
+  formatTime,
+  generateNonce,
+  getBreakInfo,
+  isLongBreak,
+  minutesToMs,
+  minutesToSeconds,
+} from '../utils';
 
 describe('formatTime', () => {
   it('formats 0 seconds as 0:00', () => {

@@ -43,7 +43,7 @@ export function getBreakInfo(
   cycleCount: number,
   breakMinutes: number,
   longBreakMinutes: number,
-  cyclesBeforeLongBreak: number
+  cyclesBeforeLongBreak: number,
 ): BreakInfo {
   const long = isLongBreak(cycleCount, cyclesBeforeLongBreak);
   return {

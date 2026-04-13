@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
-import type { Language, PomodoroSettings } from './types';
 import { CONFIG_SECTION } from './constants';
+import type { Language, PomodoroSettings } from './types';
 
 export type { PomodoroSettings } from './types';
 
@@ -20,7 +20,10 @@ export function loadSettings(): PomodoroSettings {
     workMinutes: config.get<number>('workMinutes', DEFAULTS.workMinutes),
     breakMinutes: config.get<number>('breakMinutes', DEFAULTS.breakMinutes),
     longBreakMinutes: config.get<number>('longBreakMinutes', DEFAULTS.longBreakMinutes),
-    cyclesBeforeLongBreak: config.get<number>('cyclesBeforeLongBreak', DEFAULTS.cyclesBeforeLongBreak),
+    cyclesBeforeLongBreak: config.get<number>(
+      'cyclesBeforeLongBreak',
+      DEFAULTS.cyclesBeforeLongBreak,
+    ),
     autoStart: config.get<boolean>('autoStart', DEFAULTS.autoStart),
     enforceFullBreak: config.get<boolean>('enforceFullBreak', DEFAULTS.enforceFullBreak),
     language: config.get<Language>('language', DEFAULTS.language),
